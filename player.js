@@ -1,7 +1,7 @@
 class Player {
-  constructor() {
-    this.isCurrentPlayer;
-    this.name;
+  constructor(token) {
+    this.isCurrentPlayer = false;
+    this.token = token;
     this.wins = [];
     this.id = Date.now();
   }
@@ -11,6 +11,6 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-    
+
   }
 }
