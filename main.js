@@ -12,7 +12,7 @@ gameBoard.addEventListener("click", function(event) {
 // Event Handlers
 function placeToken(event) {
   console.log(event.target.id);
-
+  if (event.target.closest("div").innerHTML === "") {
     event.target.closest("div").innerHTML += `<img src="${currentToken}" class="dino-toe">`;
-
+  }    
 }
