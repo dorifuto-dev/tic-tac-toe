@@ -19,4 +19,14 @@ class Game {
   clearBoard() {
     this.board = [["", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", ""]];
   }
+
+  checkWin(x) {
+    for (var i = 0; i < this.winningCombos.length; i++) {
+      if (this.winningCombos[i].every(elem => this.board[x].includes(elem))) {
+        this.winner = this.players[x].token;
+        this.players[x].wins += 0.5;
+        return true;
+      }
+    }
+  }
 }
