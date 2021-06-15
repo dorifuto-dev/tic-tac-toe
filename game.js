@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     this.winner = null;
+    this.players = [];
     this.turn = null;
     this.board = [["", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", ""]];
     this.winningCombos = [
