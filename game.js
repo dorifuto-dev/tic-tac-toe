@@ -1,9 +1,9 @@
 class Game {
   constructor() {
-    this.currentPlayer = "🦕";
     this.winner = null;
+    this.players = [];
     this.turn = null;
-    this.board = ["", "", "", "", "", "", "", "", ""];
+    this.board = [["", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", ""]];
     this.winningCombos = [
       [0, 1, 2],
       [3, 4, 5],
@@ -17,6 +17,16 @@ class Game {
   }
 
   clearBoard() {
-    this.board = ["", "", "", "", "", "", "", "", ""];
+    this.board = [["", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", ""]];
+  }
+
+  checkWin(x) {
+    for (var i = 0; i < this.winningCombos.length; i++) {
+      if (this.winningCombos[i].every(elem => this.board[x].includes(elem))) {
+        this.winner = this.players[x].token;
+        this.players[x].wins += 0.5;
+        return true;
+      }
+    }
   }
 }
