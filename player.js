@@ -1,17 +1,16 @@
 class Player {
-  constructor(token) {
+  constructor(token, id) {
     this.token = token;
     this.wins = 0;
-    this.id = Date.now();
+    this.id = id;
   }
 
   saveWinsToStorage() {
-    var wins = this.wins;
-    localStorage.setItem(parseInt(this.id), JSON.stringify(wins))
+    localStorage.setItem(this.id, JSON.stringify(this.wins));
 
   }
 
   retrieveWinsFromStorage() {
-
+    return JSON.parse(localStorage.getItem(this.id));
   }
 }
