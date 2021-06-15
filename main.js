@@ -1,10 +1,8 @@
 // Global Variables
 var currentToken = `./assets/dino.svg`;
-var player1 = new Player("🦕");
-var player2 = new Player("☄️");
 var game = new Game();
-game.players.push(player1);
-game.players.push(player2);
+game.players.push(new Player("🦕"));
+game.players.push(new Player("☄️"));
 var gameActive = true;
 
 // Query Selectors
@@ -21,33 +19,30 @@ gameBoard.addEventListener("click", function(event) {
 
 // Event Handlers
 function checkWinner(index) {
-  for (var i = 0; i < game.winningCombos.length; i++) {
-    if (game.winningCombos[i].every(elem => game.board[index].includes(elem))) {
-      var won = game.players[index];
-      game.winner = won.token;
-      whosTurn.innerText = `The winner is ${won.token}!`;
-      won.wins++;
-      renderWins();
-      gameActive = false;
-      return true;
-    }
+//   for (var i = 0; i < game.winningCombos.length; i++) {
+//     if (game.winningCombos[i].every(elem => game.board[index].includes(elem))) {
+//       var won = game.players[index];
+//       game.winner = won.token;
+//       whosTurn.innerText = `The winner is ${won.token}!`;
+//       won.wins++;
+//       renderWins();
+//       gameActive = false;
+//       return true;
+//     }
+//   }
+//   checkDraw();
+//   return false;
+// }
+  game.checkWin([index]);
+  if (game.checkWin([index]) === true) {
+    whosTurn.innerText = `The winner is ${game.players[index].token}!`
+    gameActive = false;
+    renderWins();
+    return true;
   }
   checkDraw();
   return false;
 }
-
-
-//   console.log("here?");
-//   // for (var i = 0; i < game.winningCombos.length; i++) {
-//     // if (!game.winningCombos[i].some(elem => game.board[index].includes(elem))) {
-//   // for (var i = 0; i < game.board[index].length; i++) {
-//     if (game.board[index].every(elem => game.winningCombos.includes(elem))) {
-//       console.log("here?");
-//       gameActive = false;
-//       whosTurn.innerText = "It's a draw!";
-//     }
-//   }
-// // }
 
 
 function clearGame() {
