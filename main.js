@@ -2,9 +2,9 @@
 var currentToken = `./assets/dino.svg`;
 var player1 = new Player("🦕");
 var player2 = new Player("☄️");
-var testGame = new Game();
-testGame.players.push(player1);
-testGame.players.push(player2);
+var game = new Game();
+game.players.push(player1);
+game.players.push(player2);
 var gameActive = true;
 
 // Query Selectors
@@ -21,10 +21,10 @@ gameBoard.addEventListener("click", function(event) {
 
 // Event Handlers
 function checkWinner(index) {
-  for (var i = 0; i < testGame.winningCombos.length; i++) {
-    if (testGame.winningCombos[i].every(elem => testGame.board[index].includes(elem))) {
-      var won = testGame.players[index];
-      testGame.winner = won.token;
+  for (var i = 0; i < game.winningCombos.length; i++) {
+    if (game.winningCombos[i].every(elem => game.board[index].includes(elem))) {
+      var won = game.players[index];
+      game.winner = won.token;
       whosTurn.innerText = `The winner is ${won.token}!`;
       won.wins++;
       renderWins();
@@ -32,51 +32,80 @@ function checkWinner(index) {
       return true;
     }
   }
+  checkDraw();
   return false;
 }
+
+
+//   console.log("here?");
+//   // for (var i = 0; i < game.winningCombos.length; i++) {
+//     // if (!game.winningCombos[i].some(elem => game.board[index].includes(elem))) {
+//   // for (var i = 0; i < game.board[index].length; i++) {
+//     if (game.board[index].every(elem => game.winningCombos.includes(elem))) {
+//       console.log("here?");
+//       gameActive = false;
+//       whosTurn.innerText = "It's a draw!";
+//     }
+//   }
+// // }
+
 
 function clearGame() {
   if (gameActive === false) {
     for (var i = 0; i < gamePositions.length; i++) {
       gamePositions[i].innerHTML = "";
-      testGame.clearBoard();
+      game.clearBoard();
       gameActive = true;
-      currentToken = `./assets/meteor.svg`;
+      currentToken = `./assets/dino.svg`;
+      whosTurn.innerText = "It's 🦕's turn";
     }
   }
 }
 
+function checkDraw() {
+  var filled = 0;
+  for (var i = 0; i < gamePositions.length; i++) {
+    if (gamePositions[i].innerHTML !== "") {
+      filled++;
+    }
+  } if (filled === 9) {
+    whosTurn.innerText = "It's a draw!";
+    gameActive = false;
+    return true;
+  }
+}
+
 function renderWins() {
-  playerOneWins.innerText = `${testGame.players[0].wins} wins`;
-  playerTwoWins.innerText = `${testGame.players[1].wins} wins`;
+  playerOneWins.innerText = `${game.players[0].wins} wins`;
+  playerTwoWins.innerText = `${game.players[1].wins} wins`;
 }
 
 function changeTurn() {
   if (currentToken === `./assets/dino.svg`) {
     whosTurn.innerText = "It's ☄️'s turn";
     currentToken = `./assets/meteor.svg`;
-    testGame.turn = "☄️"
+    game.turn = "☄️"
   } else if (currentToken === `./assets/meteor.svg`) {
     whosTurn.innerText = "It's 🦕's turn";
     currentToken = `./assets/dino.svg`;
+    game.turn = "🦕";
   }
 }
 
 function placeToken(event) {
   var tag = parseInt(event.target.id);
   var tokenImg = `<img src="${currentToken}" class="dino-toe">`;
-  if (event.target.closest("div").innerHTML === "" && currentToken === `./assets/dino.svg` && gameActive === true) {
+  if (event.target.closest("div").innerHTML === "" && currentToken === `./assets/dino.svg` && gameActive) {
     event.target.closest("div").innerHTML += tokenImg;
-    testGame.board[0].splice(tag, 1, tag);
+    game.board[0].splice(tag, 1, tag);
     changeTurn();
     checkWinner(0);
-  } else if (event.target.closest("div").innerHTML === "" && currentToken === `./assets/meteor.svg` && gameActive === true) {
+  } else if (event.target.closest("div").innerHTML === "" && currentToken === `./assets/meteor.svg` && gameActive) {
     event.target.closest("div").innerHTML += tokenImg;
-    testGame.board[1].splice(tag, 1, tag);
+    game.board[1].splice(tag, 1, tag);
     changeTurn();
     checkWinner(1);
   } else {
     clearGame();
-    changeTurn();
   }
 }
