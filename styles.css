@@ -33,6 +33,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   width: 50%;
   background-color: #ffffff;
   opacity: 85%
@@ -45,7 +46,7 @@ main {
 }
 
 .dino-toe {
-  height: 80px;
+  height: 70px;
 }
 
 h2 {
@@ -54,7 +55,7 @@ h2 {
 
 h1 {
   font-size: 50px;
-  margin: 40px 0px 40px;
+  margin: 40px 0px 50px;
 }
 
 .tic-tac-toe {
@@ -70,8 +71,8 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;
-  width: 150px;
+  height: 130px;
+  width: 130px;
   background-color: #ffffff;
 
 }
