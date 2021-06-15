@@ -1,8 +1,8 @@
 // Global Variables
 var currentToken = `./assets/dino.svg`;
 var game = new Game();
-game.players.push(new Player("🦕"));
-game.players.push(new Player("☄️"));
+game.players.push(new Player("🦕", "player1"));
+game.players.push(new Player("☄️", "player2"));
 var gameActive = true;
 
 // Query Selectors
@@ -13,29 +13,16 @@ var playerOneWins = document.querySelector(".left-wins");
 var playerTwoWins = document.querySelector(".right-wins");
 
 // Event Listeners
-// window.onload = renderWins();
+window.addEventListener("load", renderWins);
 gameBoard.addEventListener("click", function(event) {
   placeToken(event)});
 
 // Event Handlers
 function checkWinner(index) {
-//   for (var i = 0; i < game.winningCombos.length; i++) {
-//     if (game.winningCombos[i].every(elem => game.board[index].includes(elem))) {
-//       var won = game.players[index];
-//       game.winner = won.token;
-//       whosTurn.innerText = `The winner is ${won.token}!`;
-//       won.wins++;
-//       renderWins();
-//       gameActive = false;
-//       return true;
-//     }
-//   }
-//   checkDraw();
-//   return false;
-// }
   game.checkWin([index]);
   if (game.checkWin([index]) === true) {
     whosTurn.innerText = `The winner is ${game.players[index].token}!`
+    game.players[index].saveWinsToStorage();
     gameActive = false;
     renderWins();
     return true;
@@ -43,7 +30,6 @@ function checkWinner(index) {
   checkDraw();
   return false;
 }
-
 
 function clearGame() {
   if (gameActive === false) {
@@ -71,8 +57,16 @@ function checkDraw() {
 }
 
 function renderWins() {
-  playerOneWins.innerText = `${game.players[0].wins} wins`;
-  playerTwoWins.innerText = `${game.players[1].wins} wins`;
+  for (var i = 0; i < game.players.length; i++) {
+    game.players[i].wins = game.players[i].retrieveWinsFromStorage();
+    if (game.players[i].wins === null) {
+      return;
+    } else {
+      playerOneWins.innerText = `${game.players[0].wins} wins`;
+      playerTwoWins.innerText = `${game.players[1].wins} wins`;
+    }
+  }
+
 }
 
 function changeTurn() {
