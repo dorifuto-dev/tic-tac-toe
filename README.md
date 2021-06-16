@@ -1,3 +1,5 @@
+# Tic Tac Toe - Dinos vs. Meteors!
+
 ## Contributors
 
 - Eric Li
@@ -35,7 +37,7 @@ This application allows a two-player game to be played, Tic Tac Toe - Dinos vs. 
 
 5. After reaching either a draw or a win, simply click on the game board to clear the tokens and play a new game.
 
-## images
+## Images
 
 ![Fig A](https://user-images.githubusercontent.com/75854628/122150610-49a63400-ce1b-11eb-8b0c-8bc1c74e6505.png)
 Fig. A
@@ -44,14 +46,18 @@ Fig. A
 Fig. B
 
 ![Fig C](https://user-images.githubusercontent.com/75854628/122150767-94c04700-ce1b-11eb-9f62-2c7101e7b844.png)
+Fig. C
 
 ![Fig D](https://user-images.githubusercontent.com/75854628/122150816-abff3480-ce1b-11eb-8e47-af72cadcc589.png)
+Fig. D
 
 ![Fig E](https://user-images.githubusercontent.com/75854628/122150865-c2a58b80-ce1b-11eb-86c9-89f2457b28b3.png)
+Fig. E
 
 ![Fig F](https://user-images.githubusercontent.com/75854628/122150906-d650f200-ce1b-11eb-8663-a7ead89d4ac9.png)
+Fig. F
 
-# Future Additions
+## Future Additions
 
 - Let players save a game card to their sidebar after each win. Persist across refreshes.
 
@@ -60,3 +66,7 @@ Fig. B
 - Add button to reset saved wins.
 
 - Let user restart a game.
+
+## Reflections/Wins
+
+- Very happy to have full functionality within the due date, since I was struggling with the logic a lot at first. However, some things could be improved, such as the Game methods and some bulky functions. However, I was surprised at how little lines of code it took to build this application.
