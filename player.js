@@ -7,7 +7,6 @@ class Player {
 
   saveWinsToStorage() {
     localStorage.setItem(this.id, JSON.stringify(this.wins));
-
   }
 
   retrieveWinsFromStorage() {

@@ -1,6 +1,5 @@
 * {
   font-family: 'Quicksand', sans-serif;
-  /* border: 1px dotted lime; */
 }
 
 *,
@@ -15,7 +14,6 @@ body {
   display: flex;
   justify-content: center;
   height: 100vh;
-  /* background: linear-gradient(#fffe48 40%, #ff7f12, #ff1213); */
   background-image: url(https://i0.wp.com/nypost.com/wp-content/uploads/sites/2/2017/05/170515-dinosaurs-asteroid-documentary-feature.jpg?quality=80&strip=all&ssl=1);
   background-size: 100%;
   background-repeat: no-repeat;
@@ -36,17 +34,16 @@ main {
   height: 100vh;
   width: 50%;
   background-color: #ffffff;
-  opacity: 85%
+  opacity: 85%;
 }
 
-.dino-icon,
-.meteor-icon {
-  height: 50px;
+.player-icons {
+  font-size: 50px;
   margin: 40px 0px 20px;
 }
 
-.dino-toe {
-  height: 70px;
+.grid-space {
+  font-size: 70px;
 }
 
 h2 {
@@ -60,11 +57,10 @@ h1 {
 
 .tic-tac-toe {
   display: grid;
+  cursor: pointer;
   grid-template-columns: repeat(3, auto);
   grid-gap: 10px;
-  /* background: linear-gradient(#ff545d, #ce48ff, #7475ff); */
   background-image: url(https://images.unsplash.com/photo-1546962339-5ff89552b8ed?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d29vZCUyMGdyYWlufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80);
-
 }
 
 div {
@@ -74,5 +70,4 @@ div {
   height: 130px;
   width: 130px;
   background-color: #ffffff;
-
 }
