@@ -20,11 +20,11 @@ class Game {
     this.board = [["", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", ""]];
   }
 
-  checkWin(x) {
+  checkWin(index) {
     for (var i = 0; i < this.winningCombos.length; i++) {
-      if (this.winningCombos[i].every(elem => this.board[x].includes(elem))) {
-        this.winner = this.players[x].token;
-        this.players[x].wins += 0.5;
+      if (this.winningCombos[i].every(elem => this.board[index].includes(elem))) {
+        this.winner = this.players[index].token;
+        this.players[index].wins += 0.5;
         return true;
       }
     }
