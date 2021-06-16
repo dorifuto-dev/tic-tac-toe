@@ -69,4 +69,4 @@ Fig. F
 
 ## Reflections/Wins
 
-- Very happy to have full functionality within the due date, since I was struggling with the logic a lot at first. However, some things could be improved, such as the Game methods and some bulky functions. However, I was surprised at how little lines of code it took to build this application.
+- Very happy to have full functionality within the due date, since I was struggling with the logic a lot at first. However, some things could be improved, such as the Game methods and some bulky functions. I was surprised at how little lines of code it took to build this application.
